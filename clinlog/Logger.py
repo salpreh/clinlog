@@ -26,7 +26,7 @@ class Logger(object):
             bold (bool): `True` to use bright style to print the message (kind of bold font).
                 By default `False`.
             highlight (bool): `True` to use the color on the background and a high contrast
-                color for the message font color (white).
+                color for the message text.
             invert_color (bool): `True` to invert font color when highlight flag is on, this will
                 switch between black and white. By default `False`. Hightlight font color white
         """
@@ -54,9 +54,9 @@ class Logger(object):
             bold (bool): `True` to use bright style to print the message (kind of bold font).
                 By default `False`.
             highlight (bool): `True` to use the color on the background and a high contrast
-                color for the message font color (black).
+                color for the message text.
             invert_color (bool): `True` to invert font color when highlight flag is on, this will
-                switch between black and white. By default `False`. Hightlight font color black.
+                switch between black and white. By default `False`. Hightlight font color white.
         """
         if tag is None:
             tag = self._warn_tag
@@ -82,9 +82,9 @@ class Logger(object):
             bold (bool): `True` to use bright style to print the message (kind of bold font).
                 By default `False`.
             highlight (bool): `True` to use the color on the background and a high contrast
-                color for the message font color (black).
+                color for the message text.
             invert_color (bool): `True` to invert font color when highlight flag is on, this will
-                switch between black and white. By default `False`. Hightlight font color black.
+                switch between black and white. By default `False`. Hightlight font color white.
         """
         if tag is None:
             tag = self._info_tag
@@ -110,7 +110,7 @@ class Logger(object):
             bold (bool): `True` to use bright style to print the message (kind of bold font).
                 By default `False`.
             highlight (bool): `True` to use the color on the background and a high contrast
-                color for the message font color (white).
+                color for the message text.
             invert_color (bool): `True` to invert font color when highlight flag is on, this will
                 switch between black and white. By default `False`. Hightlight font color white.
         """
@@ -138,7 +138,7 @@ class Logger(object):
             bold (bool): `True` to use bright style to print the message (kind of bold font).
                 By default `False`.
             highlight (bool): `True` to use the color on the background and a high contrast
-                color for the message font color (white).
+                color for the message text.
             invert_color (bool): `True` to invert font color when highlight flag is on, this will
                 switch between black and white. By default `False`. Hightlight font color white.
         """
