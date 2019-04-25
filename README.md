@@ -1,10 +1,13 @@
 # clinlog
 
-**Package to easly log styled messages on console using [colorama](https://github.com/tartley/colorama)**
+[![PyPI version](https://badge.fury.io/py/clinlog.svg)](https://badge.fury.io/py/clinlog)
+[![PyPI version](https://img.shields.io/github/license/salpreh/clinlog.svg)](https://img.shields.io/github/license/salpreh/clinlog.svg)
+
+**Package to easily log styled messages on console using [colorama](https://github.com/tartley/colorama)**
 
 ---
 ## Basic usage
-Create a `Logger` object and use his convenient methods to print styled messages to console. You can define a default tag for each kind of message on the `Logger` instance.
+Create a `Logger` object and use his convenient methods to print styled messages in console. You can define a default tag for each kind of message on the `Logger` instance.
 
 ### Print style methods
 - `print_error()`
@@ -15,12 +18,13 @@ Create a `Logger` object and use his convenient methods to print styled messages
 
 The signature for all print methods are the same:
 1. **message _(str)_**: Message to print.
-2. **tag _(str)_**: (Optional) Prefix to print with the message. If `None` the default tag for this kind of messages is used. An empty string will remove the tag for this print.
+2. **tag _(str)_**: (Optional) Prefix tag to print with the message. If `None` the default tag for this kind of messages is used. An empty string will remove the tag for this print.
 3. **bold _(bool)_**: (Optional) `True` to use bright style to print the message (kind of bold font). By default `False`.
-4. **highlight _(bool)_**: `True` to use the color on the background and a high contrast color for the message font color.
+4. **highlight _(bool)_**: `True` to use the color on the background and a high contrast color for the message text.
 5. **invert_color _(bool)_**: `True` to invert font color when highlight flag is on, this will switch between black and white. By default `False`.
 
 ### Default print tag attributes
+When a `Logger` object is created all default tags are an empty string _(no tag)_
 - `error_tag`
 - `warn_tag`
 - `info_tag`
@@ -34,7 +38,7 @@ from clinlog import Logger
 # Create the logger
 log = Logger()
 
-# Set default error message
+# Set default error tag
 log.error_tag = '[ERROR]: '
 
 # Print error styled message
