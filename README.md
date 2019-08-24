@@ -10,11 +10,11 @@
 Create a `Logger` object and use his convenient methods to print styled messages in console. You can define a default tag for each kind of message on the `Logger` instance.
 
 ### Print style methods
-- `print_error()`
-- `print_warn()`
-- `print_info()`
-- `print_confirm()`
-- `print_norm()`
+- `error()`
+- `warn()`
+- `info()`
+- `confirm()`
+- `print()`
 
 The signature for all print methods are the same:
 1. **message _(str)_**: Message to print.
@@ -29,7 +29,7 @@ When a `Logger` object is created all default tags are an empty string _(no tag)
 - `warn_tag`
 - `info_tag`
 - `confirm_tag`
-- `norm_tag`
+- `print_tag`
 
 ### Code Sample
 ```py
@@ -42,13 +42,13 @@ log = Logger()
 log.error_tag = '[ERROR]: '
 
 # Print error styled message
-log.print_error('Unable to access config file', bold=True)
+log.error('Unable to access config file', bold=True)
 
 # Print warning highlighted and bold
-log.print_warn('The execution will continue with default configuration', None, True, True)
+log.warn('The execution will continue with default configuration', None, True, True)
 
 # Confirmation log with provided tag
-log.print_confirm('Execution completed', '[SUCCESS]')
+log.confirm('Execution completed', '[SUCCESS]')
 ```
 
 ### Output

@@ -12,9 +12,9 @@ class Logger(object):
         self._info_tag = ''
         self._warn_tag = ''
         self._confirm_tag = ''
-        self._norm_tag = ''
+        self._print_tag = ''
 
-    def print_error(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def error(self, message, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with error style (red ANSI color)
 
@@ -42,7 +42,7 @@ class Logger(object):
 
         print("{}{}{}{}".format(style, tag, message, Style.RESET_ALL))
 
-    def print_warn(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def warn(self, message, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with warning style (yellow ANSI color)
 
@@ -70,7 +70,7 @@ class Logger(object):
 
         print("{}{}{}{}".format(style, tag, message, Style.RESET_ALL))
 
-    def print_info(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def info(self, message, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with information style (cyan ANSI color)
 
@@ -98,7 +98,7 @@ class Logger(object):
 
         print("{}{}{}{}".format(style, tag, message, Style.RESET_ALL))
 
-    def print_confirm(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def confirm(self, message, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with confirmation style (green ANSI color)
 
@@ -126,7 +126,7 @@ class Logger(object):
 
         print("{}{}{}{}".format(style, tag, message, Style.RESET_ALL))
 
-    def print_norm(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def print(self, message, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout in with black and wihte palette.
 
@@ -143,7 +143,7 @@ class Logger(object):
                 switch between black and white. By default `False`. Hightlight font color white.
         """
         if tag is None:
-            tag = self._norm_tag
+            tag = self.print_tag
 
         style = Style.BRIGHT if bold else Style.NORMAL
         if highlight:
@@ -199,12 +199,12 @@ class Logger(object):
         self._confirm_tag = str(new_tag)
 
     @property
-    def norm_tag(self):
+    def print_tag(self):
         """
         Default standard messages tag
         """
-        return self._norm_tag
+        return self._print_tag
 
-    @norm_tag.setter
-    def norm_tag(self, new_tag):
-        self._norm_tag = str(new_tag)
+    @print_tag.setter
+    def print_tag(self, new_tag):
+        self._print_tag = str(new_tag)
