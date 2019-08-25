@@ -10,10 +10,11 @@
 Create a `Logger` object and use his convenient methods to print styled messages in console. You can define a default tag for each kind of message on the `Logger` instance.
 
 ### Print style methods
-- `error()`
-- `warn()`
-- `info()`
 - `confirm()`
+- `error()`
+- `warning()`
+- `info()`
+- `debug()`
 - `print()`
 
 The signature for all print methods are the same:
@@ -25,11 +26,25 @@ The signature for all print methods are the same:
 
 ### Default print tag attributes
 When a `Logger` object is created all default tags are an empty string _(no tag)_
+- `confirm_tag`
 - `error_tag`
 - `warn_tag`
 - `info_tag`
-- `confirm_tag`
 - `print_tag`
+
+### Log level param
+You can provide a log level parameter to control the verbosity of the logger, this parameter can be provided during construction or via setter method. By default `Logger` class takes max verbosity level _(debug)_
+```py
+from clinlog import Logger
+
+# Creating a Logger with warining log level
+log = Logger(log_level='warning')
+
+# Updating log level via setter
+log.log_level = 'debug'
+
+```
+
 
 ### Code Sample
 ```py
@@ -45,10 +60,13 @@ log.error_tag = '[ERROR]: '
 log.error('Unable to access config file', bold=True)
 
 # Print warning highlighted and bold
-log.warn('The execution will continue with default configuration', None, True, True)
+log.warning('The execution will continue with default configuration', None, True, True)
 
 # Confirmation log with provided tag
 log.confirm('Execution completed', '[SUCCESS]')
+
+# Debug log with provided tag
+log.debug('DB returned 8 entries for the user', '[DEBUG] ')
 ```
 
 ### Output
