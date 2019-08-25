@@ -15,11 +15,14 @@ def sample_call():
     # Print error styled message
     log.error('Unable to access config file', bold=True)
 
-    # Print warning highlighted and bold
-    log.warn('The execution will continue with default configuration', None, True, True)
+    # Print warninging highlighted and bold
+    log.warning('The execution will continue with default configuration', None, True, True)
 
     # Confirmation log with provided tag
-    log.confirm('Execution completed', '[SUCCESS]')
+    log.confirm('Execution completed', '[SUCCESS] ')
+
+    # Confirmation log with provided tag
+    log.debug('DB returned 8 entries for the user', '[DEBUG] ')
 
 
 def error_tests(message, log):
@@ -30,12 +33,12 @@ def error_tests(message, log):
     log.error(message, '[IMPORTANT] ', True, True)
 
 
-def warn_tests(message, log):
-    log.warn_tag = '[WARNING] '
-    log.warn(message, '')
-    log.warn(message, '[WARN] ', True)
-    log.warn(message, None, False, True)
-    log.warn(message, '[ATTENTION] ', True, True)
+def warning_tests(message, log):
+    log.warning_tag = '[WARNING] '
+    log.warning(message, '')
+    log.warning(message, '[WARN] ', True)
+    log.warning(message, None, False, True)
+    log.warning(message, '[ATTENTION] ', True, True)
 
 
 def info_tests(message, log):
@@ -51,6 +54,13 @@ def confirm_tests(message, log):
     log.confirm(message, '[OK] ', True)
     log.confirm(message, '[ACCEPTED] ', False, True)
     log.confirm(message, '[CONFIRMED] ', True, True)
+
+
+def debug_tests(message, log):
+    log.debug(message)
+    log.debug(message, '[LOG] ', True)
+    log.debug(message, '', False, True)
+    log.debug(message, '[DEBUG] ', True, True)
 
 
 def normal_tests(message, log):
@@ -75,7 +85,7 @@ if __name__ == '__main__':
     msg = 'Keep in mind this'
     log.print('\nWarning messages', bold=True)
     print('='*len(msg))
-    warn_tests(msg, log)
+    warning_tests(msg, log)
 
     # Info preview
     msg = 'You are in the right way'
@@ -88,6 +98,12 @@ if __name__ == '__main__':
     log.print('\nConfirmation messages', bold=True)
     print('='*len(msg))
     confirm_tests(msg, log)
+
+    # Confirm preview
+    msg = 'DB retuned 5 entries'
+    log.print('\nDebug messages', bold=True)
+    print('='*len(msg))
+    debug_tests(msg, log)
 
     # Normal style preview
     msg = 'Pretty regular message'
