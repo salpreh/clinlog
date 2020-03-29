@@ -76,7 +76,7 @@ log.debug('DB returned 8 entries for the user', '[DEBUG] ')
 <img src="https://raw.githubusercontent.com/salpreh/clinlog/master/assets/sample.png" alt="tree_output">
 
 ### ClinlogHandler and python logging package
-To use Clinlog with python (logging package)[https://docs.python.org/3/library/logging.html] you can create an instance of `ClinlogHandler` and add it to your custom logger handlers. There are two convinent funcions to create a `logging.Logger` whith this handler setted.
+To use Clinlog with python [logging package](https://docs.python.org/3/library/logging.html) you can create an instance of `ClinlogHandler` and add it to your custom logger handlers. There are two convinent funcions to create a `logging.Logger` whith this handler setted.
 
 First here is an example of how to create a logger from logging package and add ClinlogHandler to print styled messages when logging.
 ```py
