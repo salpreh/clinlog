@@ -1,28 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+import logging
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
+
 from clinlog import Logger
-
-
-def sample_call():
-    # Create the logger
-    log = Logger()
-
-    # Set default error message
-    log.error_tag = '[ERROR]: '
-
-    # Print error styled message
-    log.error('Unable to access config file', bold=True)
-
-    # Print warninging highlighted and bold
-    log.warning('The execution will continue with default configuration', None, True, True)
-
-    # Confirmation log with provided tag
-    log.confirm('Execution completed', '[SUCCESS] ')
-
-    # Confirmation log with provided tag
-    log.debug('DB returned 8 entries for the user', '[DEBUG] ')
+from clinlog.logging import ClinlogHandler
+from clinlog.logging import get_logger as get_clinlog_logger
 
 
 def error_tests(message, log):
@@ -71,8 +55,49 @@ def normal_tests(message, log):
     log.print(message, '', True, True)
 
 
-if __name__ == '__main__':
-    sample_call()
+def logging_preview():
+    logger = logging.getLogger('clinlog')
+    cl_handler = ClinlogHandler()
+    
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(cl_handler)
+
+    logger.critical('This is a critical error!')
+    logger.error('This is an error')
+    logger.warning('Some warning')
+    logger.info('Everithing is going right for now')
+    logger.debug('User input was 4')
+
+def logging_create_preview():
+    logger = get_clinlog_logger(logging.DEBUG)
+
+    logger.critical('This is a critical error!')
+    logger.error('This is an error')
+    logger.warning('Some warning')
+    logger.info('Everithing is going right for now')
+    logger.debug('User input was 4')
+
+def sample_preview():
+    # Create the logger
+    log = Logger()
+
+    # Set default error message
+    log.error_tag = '[ERROR]: '
+
+    # Print error styled message
+    log.error('Unable to access config file', bold=True)
+
+    # Print warninging highlighted and bold
+    log.warning('The execution will continue with default configuration', None, True, True)
+
+    # Confirmation log with provided tag
+    log.confirm('Execution completed', '[SUCCESS] ')
+
+    # Confirmation log with provided tag
+    log.debug('DB returned 8 entries for the user', '[DEBUG] ')
+
+
+def clinlog_preview():
     log = Logger()
 
     # Error preview
@@ -110,3 +135,9 @@ if __name__ == '__main__':
     log.print('\nNomal style messages', bold=True)
     print('='*len(msg))
     normal_tests(msg, log)
+
+if __name__ == '__main__':
+    # sample_preview()
+    clinlog_preview()
+    logging_preview()
+    logging_create_preview()
