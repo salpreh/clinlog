@@ -10,6 +10,7 @@ def get_logger(log_level=None):
 
     return logging.getLogger(LOGGER_NAME)
 
+
 def create_logger(log_level=None):
     if not log_level:
         log_level = logging.DEBUG
