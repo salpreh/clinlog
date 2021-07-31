@@ -1,6 +1,5 @@
 from .Logger import Logger
 
-
 DEFAULT_LOGGER = None
 
 
@@ -35,10 +34,10 @@ def create_logger(log_level=None):
         log_level = Logger.DEBUG
 
     logger = Logger(log_level)
-    logger.error_tag('[ERROR] ')
-    logger.warn_tag('[WARN] ')
-    logger.confirm_tag('[SUCCESS] ')
-    logger.info_tag('[INFO] ')
-    logger.debug_tag('[DEBUG] ')
+    logger.error_tag = '[ERROR] '
+    logger.warn_tag = '[WARN] '
+    logger.confirm_tag = '[SUCCESS] '
+    logger.info_tag = '[INFO] '
+    logger.debug_tag = '[DEBUG] '
 
     return logger
