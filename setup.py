@@ -5,7 +5,7 @@ import re
 
 
 # Get current version
-version = '0.2.2'
+version = '1.0.0'
 version_input_path = Path('./setup/version.txt')
 if version_input_path.exists():
     with open(version_input_path, 'r') as f:
