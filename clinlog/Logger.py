@@ -57,7 +57,7 @@ class Logger(object):
             'confirm': 3
         }
 
-    def error(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def error(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with error style (red ANSI color)
 
@@ -76,9 +76,9 @@ class Logger(object):
         if self._log_level > self._get_log_level_dict().get('error', self._max_verbosity):
             return
 
-        print(self._get_error_str(message, tag, bold, highlight, invert_color))
+        print(self._get_error_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_error_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_error_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         if tag is None:
             tag = self._error_tag
 
@@ -89,9 +89,9 @@ class Logger(object):
         else:
             style += Fore.RED
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def warning(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def warning(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with warning style (yellow ANSI color)
 
@@ -110,9 +110,9 @@ class Logger(object):
         if self._log_level > self._get_log_level_dict().get('warning', self._max_verbosity):
             return
         
-        print(self._get_warning_str(message, tag, bold, highlight, invert_color))
+        print(self._get_warning_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_warning_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_warning_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         if tag is None:
             tag = self._warn_tag
 
@@ -123,9 +123,9 @@ class Logger(object):
         else:
             style += Fore.YELLOW
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def info(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def info(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with information style (cyan ANSI color)
 
@@ -144,9 +144,9 @@ class Logger(object):
         if self._log_level > self._get_log_level_dict().get('info', self._max_verbosity):
             return
 
-        print(self._get_info_str(message, tag, bold, highlight, invert_color))
+        print(self._get_info_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_info_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_info_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         if tag is None:
             tag = self._info_tag
 
@@ -157,9 +157,9 @@ class Logger(object):
         else:
             style += Fore.CYAN
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def confirm(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def confirm(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with confirmation style (green ANSI color)
 
@@ -178,9 +178,9 @@ class Logger(object):
         if self._log_level > self._get_log_level_dict().get('confirm', self._max_verbosity):
             return
 
-        print(self._get_confirm_str(message, tag, bold, highlight, invert_color))
+        print(self._get_confirm_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_confirm_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_confirm_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         if tag is None:
             tag = self._confirm_tag
 
@@ -191,9 +191,9 @@ class Logger(object):
         else:
             style += Fore.GREEN
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def debug(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def debug(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout with debug style (blue ANSI color)
 
@@ -212,9 +212,9 @@ class Logger(object):
         if self._log_level > self._get_log_level_dict().get('debug', self._max_verbosity):
             return
 
-        print(self._get_debug_str(message, tag, bold, highlight, invert_color))
+        print(self._get_debug_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_debug_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_debug_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         if tag is None:
             tag = self._debug_tag
 
@@ -225,9 +225,9 @@ class Logger(object):
         else:
             style += Fore.BLUE
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def print(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def print(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         """
         Prints a message to stdout in with black and wihte palette.
 
@@ -246,9 +246,9 @@ class Logger(object):
         if tag is None:
             tag = self.print_tag
 
-        print(self._get_print_str(message, tag, bold, highlight, invert_color))
+        print(self._get_print_str(message, *args, tag=tag, bold=bold, highlight=highlight, invert_color=invert_color))
 
-    def _get_print_str(self, message, tag=None, bold=False, highlight=False, invert_color=False):
+    def _get_print_str(self, message, *args, tag=None, bold=False, highlight=False, invert_color=False):
         style = Style.BRIGHT if bold else Style.NORMAL
         if highlight:
             style += "{}{}".format(Back.WHITE, Fore.BLACK if not invert_color else Fore.WHITE)
@@ -256,14 +256,17 @@ class Logger(object):
         else:
             style += Fore.WHITE
 
-        return self._get_decorated_str(message, tag, style)
+        return self._get_decorated_str(message, *args, prefix=tag, style=style)
 
-    def _get_decorated_str(self, msg, prefix='', style=None):
+    def _get_decorated_str(self, msg, *args, prefix='', style=None):
         clear_sty = Style.RESET_ALL
         if not style:
             clear_sty = ''
             style = ''
-        
+
+        if args:
+            msg = msg.format(*args)
+
         return '{}{}{}{}'.format(style, prefix, msg, clear_sty)
 
     @property

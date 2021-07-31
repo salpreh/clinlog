@@ -11,48 +11,48 @@ from clinlog.logging import get_logger as get_clinlog_logger
 
 def error_tests(message, log):
     log.error_tag = '[BAD CALL] '
-    log.error(message, '')
-    log.error(message, '[ERROR] ', True)
-    log.error(message, None, False, True)
-    log.error(message, '[IMPORTANT] ', True, True)
+    log.error(message, tag='')
+    log.error(message, tag='[ERROR] ', bold=True)
+    log.error(message, tag=None, bold=False, highlight=True)
+    log.error(message, tag='[IMPORTANT] ', bold=True, highlight=True)
 
 
 def warning_tests(message, log):
     log.warning_tag = '[WARNING] '
-    log.warning(message, '')
-    log.warning(message, '[WARN] ', True)
-    log.warning(message, None, False, True)
-    log.warning(message, '[ATTENTION] ', True, True)
+    log.warning(message, tag='')
+    log.warning(message, tag='[WARN] ', bold=True)
+    log.warning(message, tag=None, bold=False, highlight=True)
+    log.warning(message, tag='[ATTENTION] ', bold=True, highlight=True)
 
 
 def info_tests(message, log):
     log.info_tag = '[INFO] '
-    log.info(message, '')
-    log.info(message, None, True)
-    log.info(message, 'Remember: ', False, True)
-    log.info(message, 'HEY: ', True, True)
+    log.info(message, tag='')
+    log.info(message, tag=None, bold=True)
+    log.info(message, 'Remember: ', bold=False, highlight=True)
+    log.info(message, tag='HEY: ', bold=True, highlight=True)
 
 
 def confirm_tests(message, log):
     log.confirm(message)
-    log.confirm(message, '[OK] ', True)
-    log.confirm(message, '[ACCEPTED] ', False, True)
-    log.confirm(message, '[CONFIRMED] ', True, True)
+    log.confirm(message, tag='[OK] ', bold=True)
+    log.confirm(message, tag='[ACCEPTED] ', bold=False, highlight=True)
+    log.confirm(message, tag='[CONFIRMED] ', bold=True, highlight=True)
 
 
 def debug_tests(message, log):
     log.debug(message)
-    log.debug(message, '[LOG] ', True)
-    log.debug(message, '', False, True)
-    log.debug(message, '[DEBUG] ', True, True)
+    log.debug(message, tag='[LOG] ', bold=True)
+    log.debug(message, tag='', bold=False, highlight=True)
+    log.debug(message, tag='[DEBUG] ', bold=True, highlight=True)
 
 
 def normal_tests(message, log):
     log.tag = '[REGULAR] '
-    log.print(message, '')
-    log.print(message, None, True)
-    log.print(message, '', False, True)
-    log.print(message, '', True, True)
+    log.print(message, tag='')
+    log.print(message, tag=None, bold=True)
+    log.print(message, tag='', bold=False, highlight=True)
+    log.print(message, tag='', bold=True, highlight=True)
 
 
 def logging_preview():
@@ -88,7 +88,7 @@ def sample_preview():
     log.error('Unable to access config file', bold=True)
 
     # Print warninging highlighted and bold
-    log.warning('The execution will continue with default configuration', None, True, True)
+    log.warning('The execution will continue with default configuration', tag=None, bold=True, highlight=True)
 
     # Confirmation log with provided tag
     log.confirm('Execution completed', '[SUCCESS] ')
